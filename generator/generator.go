@@ -2,6 +2,7 @@ package generator
 
 import (
 	"crypto/rand"
+	"fmt"
 	"geopass-cli/config"
 	"math"
 	"math/big"
@@ -23,7 +24,7 @@ func GeneratePassword(length int) (string, float64, error) {
 
 	// --- ENSURE LENGTH IS VALID ---
 	if length < MinPasswordLength {
-		return "", 0, nil
+		return "", 0, fmt.Errorf("password length must be at least %d", MinPasswordLength)
 	}
 
 	// --- GENERATE PASSWORD ---
